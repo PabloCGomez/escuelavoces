@@ -112,10 +112,18 @@
 </div>
 
 
-    <hr class="border-secondary">
+        <hr class="border-secondary">
 
-    <a href="/usuario/logout/" class="text-danger"><i class="bi bi-box-arrow-right me-2"></i> Cerrar sesión</a>
+        <form method="post" action="{% url 'logout' %}" class="d-inline">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-link text-danger p-0">
+            <i class="bi bi-box-arrow-right me-2"></i> Cerrar sesión
+        </button>
+        </form>
+
 </div>
+
+
 
 <div class="content">
     {% block dashboard_content %}{% endblock %}
