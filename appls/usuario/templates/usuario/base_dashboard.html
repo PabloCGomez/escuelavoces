@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+    body { background: #f5f6f8; }
+    .sidebar {
+        width: 250px;
+        height: 100vh;
+        background: #1e1e2d;
+        color: #fff;
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding-top: 20px;
+    }
+    .sidebar .logo {
+        font-size: 22px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 25px;
+    }
+    .sidebar a {
+        color: #c7c7d9;
+        padding: 12px 20px;
+        display: block;
+        text-decoration: none;
+        font-size: 15px;
+    }
+    .sidebar a:hover, .sidebar a.active {
+        background: #3a3a4d;
+        color: #fff;
+    }
+    .content {
+        margin-left: 250px;
+        padding: 30px;
+        min-height: 100vh;
+    }
+</style>
+
+<div class="sidebar">
+    <div class="logo">Panel de Administración</div>
+
+    <a href="/usuario/dashboard/" class="{% if request.path == '/usuario/dashboard/' %}active{% endif %}">
+        <i class="bi bi-speedometer2 me-2"></i> Panel
+    </a>
+
+    <a href="/contenido/crear/"><i class="bi bi-newspaper me-2"></i> Noticias</a>
+    <a href="#"><i class="bi bi-images me-2"></i> Galería</a>
+    <a href="#"><i class="bi bi-chat-dots me-2"></i> Mensaje PopUp</a>
+
+    <hr class="border-secondary">
+
+    <a href="/usuario/logout/" class="text-danger"><i class="bi bi-box-arrow-right me-2"></i> Cerrar sesión</a>
+</div>
+
+<div class="content">
+    {% block dashboard_content %}{% endblock %}
+</div>
+
+{% endblock %}

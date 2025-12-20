@@ -1,0 +1,26 @@
+<div class="container my-5">
+    <h1 class="fw-bold mb-4">Noticias</h1>
+
+    <div class="row">
+        {% for noticia in noticias %}
+        <div class="col-md-4 mb-4">
+
+            <div class="card shadow-sm h-100">
+                {% if noticia.imagen %}
+                <img src="{{ noticia.imagen.url }}" class="card-img-top" alt="">
+                {% endif %}
+
+                <div class="card-body">
+                    <h5>{{ noticia.titulo }}</h5>
+                    <p>{{ noticia.resumen }}</p>
+
+                    <a href="{% url 'noticia_detalle' noticia.slug %}" class="btn btn-primary">
+                        Leer más
+                    </a>
+                </div>
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+</div>

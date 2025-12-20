@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="card shadow p-4" style="width: 420px;">
+        
+        <h4 class="text-center mb-4">Crear Cuenta</h4>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label>Email</label>
+                {{ form.email }}
+            </div>
+
+            <div class="mb-3">
+                <label>Nombres</label>
+                {{ form.first_name }}
+            </div>
+
+            <div class="mb-3">
+                <label>Apellidos</label>
+                {{ form.last_name }}
+            </div>
+
+            <div class="mb-3">
+                <label>Contraseña</label>
+                {{ form.password1 }}
+            </div>
+
+            <div class="mb-3">
+                <label>Repetir Contraseña</label>
+                {{ form.password2 }}
+            </div>
+
+            <button class="btn btn-primary w-100" type="submit">Registrarme</button>
+
+            <div class="mt-3 text-center">
+                ¿Ya tienes cuenta? <a href="/usuario/login/">Ingresar</a>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+</body>
+</html>
+{% endblock content %}

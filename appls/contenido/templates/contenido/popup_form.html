@@ -1,0 +1,175 @@
+
+{% extends "dashboard/base_dashboard.html" %}
+{% load static %}
+
+{% block dashboard_content %}
+
+<div class="container my-5" style="max-width: 900px;">
+
+  <div class="card shadow-sm border-0 rounded-4">
+    <div class="card-body p-4">
+
+      <h4 class="fw-bold mb-4">{{ titulo }}</h4>
+
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <!-- Título -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Título</label>
+          {{ form.titulo }}
+        </div>
+     
+
+        <!-- 🔹 Zona Drag & Drop -->
+        <div class="mb-4">
+          <label class="form-label fw-semibold">Imágenes del popup</label>
+
+          <div id="dropzone"
+               class="border border-2 border-dashed rounded-4 p-4 text-center bg-light"
+               style="cursor:pointer;">
+
+            <p class="mb-1 text-muted">
+              🖼 Arrastra las imágenes aquí o haz click
+            </p>
+            <small class="text-muted">
+              Puedes subir múltiples imágenes
+            </small>
+
+            <input type="file"
+                   name="imagenes"
+                   id="imagenes"
+                   multiple
+                   accept="image/*"
+                   hidden>
+          </div>
+
+          <!-- Preview -->
+          <div id="preview" class="row g-3 mt-3"></div>
+          {% if popup and popup.fotosPopUP.all %}
+                <hr>
+                <h6 class="fw-bold mb-3">Imágenes guardadas</h6>
+
+                <div class="row g-3">
+                  {% for foto in popup.fotosPopUP.all %}
+                    <div class="col-6 col-md-4">
+                      <div class="card shadow-sm">
+
+                        <img src="{{ foto.imagen.url }}"
+                            class="card-img-top rounded"
+                            style="max-height:180px; object-fit:cover;">
+
+                        <div class="card-body text-center p-2">
+                          <a href="{% url 'popup_foto_eliminar' foto.id %}"
+                            class="btn btn-sm btn-outline-danger"
+                            onclick="return confirm('¿Eliminar esta imagen?')">
+                            🗑 Eliminar
+                          </a>
+                        </div>
+
+                      </div>
+                    </div>
+                  {% endfor %}
+                </div>
+                {% endif %}
+
+        </div>
+
+        <!-- Link -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Link (opcional)</label>
+          {{ form.link }}
+        </div>
+
+        <!-- Tipo -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Tipo</label>
+          {{ form.tipo }}
+        </div>
+
+        <!-- Activo -->
+        <div class="form-check mb-3">
+          {{ form.activo }}
+          <label class="form-check-label fw-semibold">
+            PopUp activo
+          </label>
+        </div>
+
+        <!-- Fechas -->
+        <div class="row g-3 mb-4">
+          <div class="col-md-6">
+            <label class="form-label fw-semibold">Fecha inicio</label>
+            {{ form.fecha_inicio }}
+          </div>
+          <div class="col-md-6">
+            <label class="form-label fw-semibold">Fecha fin</label>
+            {{ form.fecha_fin }}
+          </div>
+        </div>
+
+        <!-- Botones -->
+        <div class="d-flex gap-2">
+          <button class="btn btn-primary px-4">
+            💾 Guardar
+          </button>
+
+          <a href="{% url 'popup_listar' %}" class="btn btn-outline-secondary px-4">
+            Cancelar
+          </a>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- JS Drag & Drop + Preview -->
+<script>
+  const dropzone = document.getElementById("dropzone");
+  const input = document.getElementById("imagenes");
+  const preview = document.getElementById("preview");
+
+  dropzone.addEventListener("click", () => input.click());
+
+  dropzone.addEventListener("dragover", e => {
+    e.preventDefault();
+    dropzone.classList.add("border-primary");
+  });
+
+  dropzone.addEventListener("dragleave", () => {
+    dropzone.classList.remove("border-primary");
+  });
+
+  dropzone.addEventListener("drop", e => {
+    e.preventDefault();
+    dropzone.classList.remove("border-primary");
+    input.files = e.dataTransfer.files;
+    renderPreview();
+  });
+
+  input.addEventListener("change", renderPreview);
+
+  function renderPreview() {
+    preview.innerHTML = "";
+    [...input.files].forEach(file => {
+      const reader = new FileReader();
+      reader.onload = e => {
+        preview.innerHTML += `
+          <div class="col-6 col-md-4">
+            <div class="card shadow-sm">
+              <img src="${e.target.result}" class="card-img-top rounded">
+            </div>
+          </div>
+        `;
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+</script>
+
+{% endblock %}
+
+
+

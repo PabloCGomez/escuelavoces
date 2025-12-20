@@ -1,0 +1,35 @@
+{% extends "dashboard/base_dashboard.html" %}
+
+{% block dashboard_content %}
+
+<h2 class="fw-bold text-primary mb-4">Bienvenido, {{ request.user.first_name }}</h2>
+
+<div class="row g-4">
+
+    <div class="col-md-4">
+        <div class="card p-3 shadow-sm">
+            <h5><i class="bi bi-newspaper text-primary me-2"></i> Noticias</h5>
+            <p class="text-muted">Crear, editar y administrar noticias.</p>
+            <a href="/contenido/crear/" class="btn btn-primary">Gestionar</a>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card p-3 shadow-sm">
+            <h5><i class="bi bi-images text-success me-2"></i> Galería</h5>
+            <p class="text-muted">Administrar imágenes del sitio.</p>
+            <a href="#" class="btn btn-success">Abrir</a>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card p-3 shadow-sm">
+            <h5><i class="bi bi-chat-dots text-warning me-2"></i> Mensaje PopUp</h5>
+            <p class="text-muted">Modificar mensaje emergente.</p>
+            <a href="#" class="btn btn-warning text-white">Editar</a>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

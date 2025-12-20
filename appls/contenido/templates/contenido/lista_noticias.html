@@ -1,0 +1,98 @@
+{% extends "dashboard/base_dashboard.html" %}
+
+{% block dashboard_content %}
+
+<div class="container my-5" style="max-width: 1100px;">
+
+    <!-- Título de la página -->
+    <div class="text-center mb-5">
+        <h1 class="fw-bold text-primary">Noticias</h1>
+        <p class="text-muted">Últimas novedades y publicaciones</p>
+    </div>
+
+
+<div class="container my-4">
+
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h4 class="fw-bold">📰 Noticias</h4>
+    <a href="{% url 'crear_noticia' %}" class="btn btn-primary btn-sm">
+      ➕ Nueva noticia
+    </a>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-hover align-middle shadow-sm">
+      <thead class="table-light">
+        <tr>
+          <th>Imagen</th>
+          <th>Título</th>
+          <th>Fecha</th>
+          <th>Estado</th>
+          <th class="text-center">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        {% for noticia in noticia %}
+        <tr>
+          <!-- Imagen -->
+          <td style="width: 120px;">
+            {% with noticia.fotos.first as foto %}
+              {% if foto %}
+                <img src="{{ foto.imagen.url }}" class="img-fluid rounded" style="max-height: 70px;">
+              {% else %}
+                <span class="text-muted small">Sin imagen</span>
+              {% endif %}
+            {% endwith %}
+          </td>
+
+          <!-- Título -->
+          <td>
+            <strong>{{ noticia.titulo }}</strong>
+          </td>
+
+          <!-- Fecha -->
+          <td>
+            {{ noticia.fecha_publicacion|date:"d M Y" }}
+          </td>
+
+          <!-- Resumen -->
+          <td class="text-muted">
+            {{ noticia.estado }}
+          </td>
+
+          <!-- Acciones -->
+          <td class="text-center">
+            <a href="{% url 'editar_noticia' noticia.id  %}" 
+               class="btn btn-sm btn-outline-primary">
+              ✏️ Editar
+            </a>
+
+            <a href="{% url 'eliminar_noticia' noticia.id  %}" 
+               class="btn btn-sm btn-outline-danger"
+               onclick="return confirm('¿Seguro que deseas eliminar esta noticia?');">
+              🗑️ Eliminar
+            </a>
+          </td>
+        </tr>
+
+        {% empty %}
+        <tr>
+          <td colspan="5" class="text-center text-muted py-4">
+            No hay noticias registradas.
+          </td>
+        </tr>
+        {% endfor %}
+
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
+
+
+
+{% endblock %}

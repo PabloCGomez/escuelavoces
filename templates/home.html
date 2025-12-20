@@ -1,0 +1,254 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Escuela Voces{% endblock %}
+
+{% block content %}
+
+<Style> 
+
+.hero {
+    background: url("{% static 'img/fondo1.jpg' %}") center/cover no-repeat;
+    width: 100%;
+    min-height: 280px;   /* aumenta un poco para que la imagen respire */
+    padding: 30px 0;
+}
+
+
+.hero-slide {
+    min-height: 70px;          /* altura del carrusel */
+    padding: 40px 20px;
+}
+
+.hero-img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.escuela-titulo-naranja {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ff5722;
+}
+
+.escuela-titulo-blanco {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffffffff;
+}
+
+.escuela-subtit-blanco {
+    font-size: 1rem;
+    color: #ffffffff;
+}
+/* Nube completa */
+.cloud-card {
+    position: relative;
+    background: #fff;
+    padding: 40px 25px;
+    border-radius: 200px;
+
+    max-width: 400px;
+    margin: 60px auto;
+}
+
+
+/* Botón */
+.kiddie-btn {
+    background: #f4b400;
+    border: none;
+    padding: 17px 20px;
+    font-size: 1 rem;
+    color: white;
+    border-radius: 25px;
+    position: relative;
+    z-index: 10;
+}
+
+
+.cloud-section {
+    background-color: #f6e7b4;
+    background-image: radial-gradient(#f0d98c 1px, transparent 1px);
+    background-size: 16px 16px;
+}
+
+.cloud-card {
+    background: #fff;
+    border-radius: 60% 60% 50% 50%;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    min-height: 300px;
+    position: relative;
+}
+
+.cloud-card2 {
+    background: #fff;
+    border-radius: 60% 60% 50% 50%;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    min-height: 300px;
+    position: relative;
+}
+
+.cloud-card::before,
+.cloud-card::after {
+    content: "";
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.cloud-card::before {
+    width: 120px;
+    height: 120px;
+    top: -40px;
+    left: 30px;
+}
+
+.cloud-card::after {
+    width: 140px;
+    height: 140px;
+    top: -50px;
+    right: 30px;
+}
+
+.cloud-card .icon {
+    font-size: 3rem;
+}
+
+.cloud-card p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+
+
+</style>
+
+
+
+
+
+<div class="hero">
+<div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+
+        <!-- SLIDE 1 (Imagen izquierda / Texto derecha) -->      
+
+        <div class="carousel-item active">
+            <div class="row align-items-center hero-slide">      
+                <!-- Imagen izquierda -->
+                <div class="col-md-6 text-center">
+                        <!--                     <img src="{% static 'img/evocesfoto1.jpg' %}" class="hero-img" alt="slide 1">
+                        -->
+                   <img src="{% static 'img/evocesfoto1.jpg' %}" class="hero-img" alt="slide 1">
+                </div>
+                <!-- Texto derecha -->
+                <div class="col-md-6 text-center text-md-start">
+                    <h2 class="escuela-titulo-blanco">Nuestro objetivo es</h2>
+                    <h1 class="escuela-titulo-naranja">Proporcionar</h1>
+                    <p class="escuela-subtit-blanco">
+                        Un entorno de confianza<br>
+                        para el crecimiento y desarrollo integral del niño
+                    </p>
+                    <button class="kiddie-btn mt-2">Más...</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 2 (Texto izquierda / Imagen derecha) -->
+        <div class="carousel-item">
+            <div class="row align-items-center hero-slide">
+
+                <div class="col-md-6 order-md-2 text-center">
+                    <img src="{% static 'img/evocesfoto2.jpg' %}" class="hero-img" alt="slide 2">
+                </div>
+
+                <div class="col-md-6 text-center text-md-center">
+                    <h2 class="escuela-titulo-blanco">Educación con cariño</h2>
+                    <h1 class="escuela-titulo-naranja">Acompañamos</h1>
+                    <p class="escuela-subtit-blanco">
+                        Cada paso del aprendizaje<br>
+                        con dedicación y cariño.
+                    </p>
+                    <button class="kiddie-btn mt-3">Más...</button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- SLIDE 3 (Imagen izquierda / Texto derecha) -->
+        <div class="carousel-item">
+            <div class="row align-items-center hero-slide">
+
+                <div class="col-md-6 text-center">
+                    <img src="{% static 'img/evocesfoto3.jpg' %}" class="hero-img" alt="slide 3">
+                </div>
+
+                <div class="col-md-6">
+                    <h2 class="escuela-titulo-blanco">Creciendo juntos</h2>
+                    <h1 class="escuela-titulo-naranja">Descubrir</h1>
+                    <p class="escuela-subtit-blanco">
+                        Fomentamos la creatividad<br>
+                        y la exploración segura.
+                    </p>
+                    <button class="kiddie-btn mt-1">Más...</button>
+                </div>
+                    
+            </div>
+        </div>
+
+    </div>
+
+</div>
+</div>
+
+<!-- Sección Features -->
+
+<div class="container py-5">
+
+    <div class="row text-center">
+
+        <!-- Games -->
+         <!-- Tarjeta 1 -->
+       
+            <div class="col-md-4">
+                <div class="cloud-card text-center p-4">          
+                    <img src="{% static 'img/ninos1.png' %}" class="feature-icon" alt="">
+                    <h3 class="feature-title">Juegos</h3>
+                    <p class="feature-text">El juego es la base del aprendizaje temprano.</p>
+                    <button class="kiddie-btn mt-3">Más...</button>
+                </div>
+            </div>
+   
+        <!-- Activities -->
+        
+        <div class="col-md-4">
+                <div class="cloud-card2 text-center p-4">
+                <img src="{% static 'img/nino2.png' %}" class="feature-icon">
+                <h3 class="feature-title">Actividades</h3>
+                <p class="feature-text">
+                    Las actividades desafían la creatividad, la imaginación y las habilidades de pensamiento.
+                </p>
+                <button class="kiddie-btn mt-3">Mas...</button>
+            </div>
+        </div>
+        
+        <!-- Education -->
+        <div class="col-md-4">
+                <div class="cloud-card text-center p-4">
+                <img src="{% static 'img/nino3.png' %}" class="feature-icon">
+                <h3 class="feature-title">Educacion</h3>
+                <p class="feature-text">
+                   Nuestra escuela ofrece muchas actividades educativas para niños.
+                </p>
+                <button class="kiddie-btn mt-3">Mas...</button>
+                </div>
+        </div>
+</div>
+
+</div> 
+
+
+
+{% endblock %}

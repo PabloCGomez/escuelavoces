@@ -1,0 +1,104 @@
+body {
+    background: #29C5FE;
+    font-family: "Comic Sans MS", "Poppins", sans-serif;
+}
+
+/* Nav infantil */
+.kiddie-nav {
+    background: #ffde59;
+    padding: 15px 0;
+    border-bottom: 4px solid #f4b400;
+}
+
+.kiddie-nav .nav-link {
+    font-weight: 600;
+    color: #000 !important;
+    font-size: 18px;
+}
+
+/* Hero */
+.hero {
+    background: url('../img/fondo1.jpg') no-repeat center top;
+    background-size: cover;
+    padding: 60px 0 120px 0;
+    text-align: center;
+    color: #fff;
+    position: relative;
+}
+
+.hero-slide {
+    min-height: 650px;   /* altura fija del carrusel */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-title {
+    font-size: 65px;
+    font-weight: 700;
+}
+
+.hero-sub {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.hero-kid-left {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 330px;
+}
+
+.hero-kid-right {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 350px;
+}
+.hero-img {
+    width: 400px;         /* todas del mismo tamaño */
+    height: 400px;        /* cuadrado igual para todas */
+    object-fit: contain;  /* no se deforman */
+    display: block;
+    margin: 0 auto;
+}
+
+/* Sección tarjetas */
+.feature-box {
+    background: white;
+    border-radius: 50%;
+    padding: 40px;
+    width: 320px;
+    height: 320px;
+    text-align: center;
+    margin: auto;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+.feature-icon {
+    width: 60px;
+    margin-bottom: 20px;
+}
+
+.feature-title {
+    font-size: 26px;
+    font-weight: bold;
+    color: #25a9e0;
+}
+
+.feature-text {
+    color: #666;
+    font-size: 16px;
+}
+
+.kiddie-btn {
+    background: #f4b400;
+    padding: 10px 25px;
+    border-radius: 30px;
+    font-weight: bold;
+    border: none;
+    color: #000;
+}
+
+

@@ -1,0 +1,455 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Escuela Voces{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'img/favicon2.png' %}">
+    <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<Style>
+/* 🌈 Fondo general con nubes */
+
+
+/* LOGO CASTILLO */
+.logo-castillo {
+    width: 120px;
+    height: auto;
+}
+
+/* Texto infantil */
+.brand-text {
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: #ff5f7d;
+    font-family: "Comic Neue", cursive;
+}
+
+
+/* Hamburguesa */
+.navbar-toggler {
+    border-color: #ffd84d;
+}
+
+
+/* Fondo general */
+.kiddy-nav {
+    background: linear-gradient(180deg, #7ed9ff 0%, #b8ecff 100%);
+    padding: 10px 0;
+}
+
+
+/* -------- NAV PRINCIPAL -------- */
+.kiddy-nav {
+    background: transparent;
+    padding: 0;
+}
+
+/* Logo */
+.logo-img {
+    height: 70px;
+}
+
+/* CINTA LÚDICA */
+.kiddy-banner {
+    background: #ffb700;
+    border-radius: 50px;
+    border: 6px dashed #ffe59e;
+    padding: 15px 40px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* TÍTULO GRANDE */
+.evoces-title {
+    font-family: "Comic Sans MS", cursive;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ff5722;
+    
+    
+}
+
+/* MENÚ */
+.kiddy-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.menu-item {
+    font-family: "Comic Sans MS", cursive;
+    font-size: 20px;
+    color: #060505ff;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.menu-item:hover {
+    color: #0051ff;
+    transform: scale(1.1);
+}
+
+/* -------- ABEJAS ANIMADAS -------- */
+.bee {
+    height: 60px;
+    animation: flap 0.7s infinite alternate ease-in-out;
+    filter: drop-shadow(0px 3px 3px rgba(0,0,0,0.1));
+}
+
+.bee-left {
+    margin-right: 15px;
+}
+
+.bee-right {
+    margin-left: 15px;
+}
+
+/* Animación alas */
+@keyframes flap {
+    from { transform: translateY(0px) rotate(-3deg); }
+    to   { transform: translateY(-6px) rotate(3deg); }
+}
+
+/* -------- RESPONSIVE -------- */
+@media (max-width: 991px) {
+
+    .kiddy-banner {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .kiddy-title {
+        font-size: 28px;
+    }
+
+    .kiddy-menu {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .bee {
+        display: none;   /* abejas ocultas en móvil */
+    }
+}
+
+
+.navbar-brand {
+    margin-left: 0 !important;
+}
+
+</style>
+
+{% if popup_activo %}
+<div class="modal fade" id="popupModal" tabindex="-1">
+
+<div class="modal-dialog modal-dialog-centered modal-xl">
+  <div class="modal-content border-0 bg-transparent">
+    <div class="modal-body p-0 d-flex justify-content-center">
+
+      <div class="popup-image-wrapper position-relative">
+
+        <!-- ❌ BOTÓN CERRAR -->
+        <button type="button"
+                class="btn-close position-absolute top-0 end-0 m-2 bg-white rounded-circle"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+                style="z-index:20">
+        </button>
+
+        <div id="popupCarousel" class="carousel slide" data-bs-ride="carousel">
+
+          <div class="carousel-inner">
+            {% for foto in popup_activo.fotosPopUP.all %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+
+              {% if popup_activo.link %}
+              <a href="{{ popup_activo.link }}" target="_blank">
+              {% endif %}
+
+                <img src="{{ foto.imagen.url }}"
+                     class="d-block popup-img rounded-4">
+
+              {% if popup_activo.link %}
+              </a>
+              {% endif %}
+
+            </div>
+            {% endfor %}
+          </div>
+
+          {% if popup_activo.fotosPopUP.count > 1 %}
+          <button class="carousel-control-prev" type="button" data-bs-target="#popupCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#popupCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </button>
+          {% endif %}
+         
+
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+</div> 
+
+
+<a href="https://wa.me/56912345678"
+          class="whatsapp-float"
+          target="_blank">
+          <i class="fab fa-whatsapp"></i>
+</a>
+
+
+
+
+<style>
+.popup-img {
+  width: 100%;
+  object-fit: contain;
+}
+
+/* 🖥 Desktop grande */
+@media (min-width: 1200px) {
+  .popup-img {
+    max-height: 75vh;
+  }
+}
+
+/* 💻 Desktop / Notebook */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .popup-img {
+    max-height: 70vh;
+  }
+}
+
+/* 📱 Tablet */
+@media (min-width: 576px) and (max-width: 991px) {
+  .popup-img {
+    max-height: 55vh;
+  }
+}
+
+/* 📱 Móvil */
+@media (max-width: 575px) {
+  .popup-img {
+    max-height: 45vh;
+  }
+}
+
+
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25D366;
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  box-shadow: 0 4px 10px rgba(0,0,0,.3);
+  z-index: 9999;
+  transition: transform .2s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  color: white;
+}
+
+
+.footer-redes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.social-cloud {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  padding: 10px 14px;
+  border-radius: 30px;
+  color: #034078;
+  text-decoration: none;
+  font-size: 14px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.social-cloud i {
+  font-size: 18px;
+}
+
+.social-cloud:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+}
+
+.footer-copy {
+  text-align: center;
+  font-size: 13px;
+  color: #555;
+}
+
+.footer-copy .dev {
+  font-size: 12px;
+  color: #777;
+}
+
+
+</style>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    new bootstrap.Modal(
+      document.getElementById("popupModal"),
+      { backdrop: 'static' }
+    ).show();
+  });
+</script>
+{% endif %}
+
+
+<body>
+
+
+
+
+<nav class="navbar navbar-expand-lg kiddy-nav">
+    <div class="container-fluid d-flex align-items-center">
+
+        <!-- LOGO IZQUIERDA REAL -->
+        <a class="navbar-brand d-flex align-items-center ms-0 me-3" href="/">
+            <img src="{% static 'img/castillo2.png' %}" class="logo-img">
+        </a>
+        <h1 class="evoces-title">Escuela Voces</h1>
+        <!-- Botón móvil -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#kiddyMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- MENÚ -->
+        <div class="collapse navbar-collapse justify-content-center" id="kiddyMenu">
+
+            <div class="kiddy-banner d-flex align-items-center">
+
+                <!-- Abeja izquierda -->
+                <img src="{% static 'img/abejita.png' %}" class="bee bee-left">
+
+                <div class="text-center px-3">
+                    
+
+                    <ul class="kiddy-menu">
+                        <li><a href="/" class="menu-item">Inicio</a></li>
+                        <li><a href="{% url 'quienes_somos' %}" class="menu-item">Quienes Somos</a></li>
+                        <li><a href="{% url 'noticias_lista_public' %}" class="menu-item">Noticias</a></li>
+                        <li><a href="#" class="menu-item">Niveles</a></li>
+
+                        <li><a href="{% url 'contacto' %}" class="menu-item">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <!-- Abeja derecha -->
+                <img src="{% static 'img/abejita.png' %}" class="bee bee-right">
+
+            </div>
+           
+
+        </div>
+
+                 <div class="collapse navbar-collapse justify-content-center" id="kiddyMenu">
+                      <ul class="kiddy-menu">
+                            {% if not request.user.is_authenticated %}
+                                    <a href="/usuario/login/" class="btn btn-primary">Ingresar</a>
+                                {% else %}
+                                    <a href="/usuario/dashboard/" class="btn btn-danger">Panel Administracion</a>
+                                {% endif %}
+                     </ul>
+                </div>
+
+
+    </div>
+</nav>
+
+
+
+{% block content %}{% endblock %}
+
+<footer class="footer-voces">
+  <div class="footer-content">
+
+    <div class="footer-redes">
+
+      <!-- Facebook -->
+      <a href="https://www.facebook.com/voces.escuelapudahuel" target="_blank" class="social-cloud">
+        <i class="fab fa-facebook-f"></i>
+        <span>Facebook</span>
+      </a>
+
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/escuelavoces.cl" target="_blank" class="social-cloud">
+        <i class="fab fa-instagram"></i>
+        <span>Instagram</span>
+      </a>
+
+      <!-- WhatsApp -->
+      <a href="https://wa.me/56937113816?text=Hola%20quiero%20más20información" target="_blank" class="social-cloud">
+        <i class="fab fa-whatsapp"></i>
+        <span>WhatsApp</span>
+      </a>
+
+      <!-- Email -->
+      <a href="mailto:escuelavoces@hotmail.com" class="social-cloud">
+        <i class="fas fa-envelope"></i>
+        <span>escuelavoces@hotmail.com</span>
+      </a>
+
+      <!-- Teléfono -->
+      <a href="tel:+56937113816" class="social-cloud">
+        <i class="fas fa-phone"></i>
+        <span>+56 2 2904 6641</span>
+      </a>
+
+    </div>
+
+    <p class="footer-copy">
+      © {{ year }} Escuela Voces · Todos los derechos reservados<br>
+      <span class="dev">Desarrollado por Laval IT</span>
+    </p>
+
+  </div>
+</footer>
+
+
+</body>
+
+</html>
