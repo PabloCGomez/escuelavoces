@@ -213,7 +213,7 @@
 </div> 
 
 
-<a href="https://wa.me/56912345678"
+<a href="https://wa.me/56937113816"
           class="whatsapp-float"
           target="_blank">
           <i class="fab fa-whatsapp"></i>
@@ -281,47 +281,148 @@
   color: white;
 }
 
+.footer-voces {
+  position: relative;
+  background: linear-gradient(to top, #7ec8ff, #eaf7ff);
+  padding: 80px 20px 40px;
+  overflow: hidden;
+  text-align: center;
+}
 
+.footer-title {
+  font-size: 26px;
+  color: #034078;
+  margin-bottom: 5px;
+}
+
+.footer-slogan {
+  font-size: 15px;
+  color: #055a8c;
+  margin-bottom: 30px;
+}
+
+/* Redes */
 .footer-redes {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 14px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .social-cloud {
   display: flex;
   align-items: center;
   gap: 8px;
-  background: #ffffff;
-  padding: 10px 14px;
+  background: #fff;
+  padding: 10px 16px;
   border-radius: 30px;
   color: #034078;
   text-decoration: none;
   font-size: 14px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.social-cloud:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
 }
 
 .social-cloud i {
   font-size: 18px;
 }
 
-.social-cloud:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+/* MAPA */
+.footer-map iframe {
+  width: 100%;
+  max-width: 600px;
+  height: 220px;
+  border: none;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  margin-bottom: 25px;
 }
 
+/* COPYRIGHT */
 .footer-copy {
-  text-align: center;
   font-size: 13px;
   color: #555;
 }
 
-.footer-copy .dev {
-  font-size: 12px;
-  color: #777;
+/* ☁️ NUBES */
+.cloud {
+  position: absolute;
+  background: white;
+  border-radius: 50px;
+  opacity: 0.6;
+  animation: moveClouds linear infinite;
+}
+
+.cloud::before,
+.cloud::after {
+  content: '';
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+}
+
+.cloud-1 {
+  width: 160px;
+  height: 50px;
+  top: 30px;
+  left: -200px;
+  animation-duration: 60s;
+}
+
+.cloud-2 {
+  width: 220px;
+  height: 65px;
+  top: 90px;
+  left: -250px;
+  animation-duration: 90s;
+}
+
+.cloud-3 {
+  width: 120px;
+  height: 40px;
+  top: 150px;
+  left: -150px;
+  animation-duration: 70s;
+}
+
+.cloud::before {
+  width: 60px;
+  height: 60px;
+  top: -30px;
+  left: 20px;
+}
+
+.cloud::after {
+  width: 80px;
+  height: 80px;
+  top: -40px;
+  right: 20px;
+}
+
+@keyframes moveClouds {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(120vw);
+  }
+}
+
+/* 📱 RESPONSIVE */
+@media (max-width: 600px) {
+  .footer-title {
+    font-size: 22px;
+  }
+
+  .footer-map iframe {
+    height: 180px;
+  }
 }
 
 
@@ -405,45 +506,57 @@
 {% block content %}{% endblock %}
 
 <footer class="footer-voces">
+  <!-- Nubes animadas -->
+  <div class="cloud cloud-1"></div>
+  <div class="cloud cloud-2"></div>
+  <div class="cloud cloud-3"></div>
+
   <div class="footer-content">
+
+    <h3 class="footer-title">Escuela Voces</h3>
+    <p class="footer-slogan">San Pablo 9130, Pudahuel, Región Metropolitana</p>
 
     <div class="footer-redes">
 
-      <!-- Facebook -->
       <a href="https://www.facebook.com/voces.escuelapudahuel" target="_blank" class="social-cloud">
         <i class="fab fa-facebook-f"></i>
         <span>Facebook</span>
       </a>
 
-      <!-- Instagram -->
       <a href="https://www.instagram.com/escuelavoces.cl" target="_blank" class="social-cloud">
         <i class="fab fa-instagram"></i>
         <span>Instagram</span>
       </a>
 
-      <!-- WhatsApp -->
-      <a href="https://wa.me/56937113816?text=Hola%20quiero%20más20información" target="_blank" class="social-cloud">
+      <a href="https://wa.me/56937113816?text=Hola%20quiero%20más%20información" target="_blank" class="social-cloud">
         <i class="fab fa-whatsapp"></i>
         <span>WhatsApp</span>
       </a>
 
-      <!-- Email -->
       <a href="mailto:escuelavoces@hotmail.com" class="social-cloud">
         <i class="fas fa-envelope"></i>
-        <span>escuelavoces@hotmail.com</span>
+        <span>Email</span>
       </a>
 
-      <!-- Teléfono -->
       <a href="tel:+56937113816" class="social-cloud">
         <i class="fas fa-phone"></i>
-        <span>+56 2 2904 6641</span>
+        <span>+56 9 3711 3816</span>
       </a>
 
     </div>
 
+    <!-- MAPA -->
+    <div class="footer-map">
+      <iframe
+        src="https://www.google.com/maps?q=Escuela%20Voces%20Pudahuel&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+
     <p class="footer-copy">
       © {{ year }} Escuela Voces · Todos los derechos reservados<br>
-      <span class="dev">Desarrollado por Laval IT</span>
+      <span>Desarrollado por Laval IT</span>
     </p>
 
   </div>

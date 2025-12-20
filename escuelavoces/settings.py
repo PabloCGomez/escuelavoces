@@ -132,18 +132,19 @@ EMAIL_HOST_USER = "site.escuelavoces@gmail.com"
 EMAIL_HOST_PASSWORD = "fbva ztaq dvxq vndr"
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://escuelavoces.cl",
+    "https://www.escuelavoces.cl",
+]
+
 
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
-
+LANGUAGE_CODE = 'es-cl'
+TIME_ZONE = 'America/Santiago'
 USE_I18N = True
-
-USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
