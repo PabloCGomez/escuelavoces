@@ -169,7 +169,7 @@ def popup_crear(request):
     else:
         form = MensajePopUpForm()
 
-    return render(request, "contenido/popup_form.html", {
+    return render(request, "contenido/crear_popup.html", {
         "form": form,
         "titulo": "Crear mensaje PopUp"
     })
