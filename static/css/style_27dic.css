@@ -1,0 +1,719 @@
+body {
+    background: #29C5FE;
+    font-family: "Comic Sans MS", "Poppins", sans-serif;
+}
+
+
+/* Nav infantil */
+.kiddie-nav {
+    background: #ffde59;
+    padding: 15px 0;
+    border-bottom: 4px solid #f4b400;
+}
+
+.kiddie-nav .nav-link {
+    font-weight: 600;
+    color: #000 !important;
+    font-size: 18px;
+}
+
+/* Hero */
+.hero {
+    background: url('../img/fondo1.jpg') no-repeat center top;
+    background-size: cover;
+    padding: 60px 0 120px 0;
+    text-align: center;
+    color: #fff;
+    position: relative;
+}
+
+.hero-slide {
+    min-height: 650px;   /* altura fija del carrusel */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-title {
+    font-size: 65px;
+    font-weight: 700;
+}
+
+.hero-sub {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.hero-kid-left {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 330px;
+}
+
+.hero-kid-right {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 350px;
+}
+.hero-img {
+    width: 400px;         /* todas del mismo tamaño */
+    height: 400px;        /* cuadrado igual para todas */
+    object-fit: contain;  /* no se deforman */
+    display: block;
+    margin: 0 auto;
+}
+
+/* Sección tarjetas */
+.feature-box {
+    background: white;
+    border-radius: 50%;
+    padding: 40px;
+    width: 320px;
+    height: 320px;
+    text-align: center;
+    margin: auto;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+.feature-icon {
+    width: 60px;
+    margin-bottom: 20px;
+}
+
+.feature-title {
+    font-size: 26px;
+    font-weight: bold;
+    color: #25a9e0;
+}
+
+.feature-text {
+    color: #666;
+    font-size: 16px;
+}
+
+.kiddie-btn {
+    background: #f4b400;
+    padding: 10px 25px;
+    border-radius: 30px;
+    font-weight: bold;
+    border: none;
+    color: #000;
+}
+
+
+/* 🌈 Fondo general con nubes */
+
+
+/* LOGO CASTILLO */
+.logo-castillo {
+    width: 120px;
+    height: auto;
+}
+
+/* Texto infantil */
+.brand-text {
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: #ff5f7d;
+    font-family: "Comic Neue", cursive;
+}
+
+
+/* Hamburguesa */
+.navbar-toggler {
+    border-color: #ffd84d;
+}
+
+
+/* Fondo general */
+.kiddy-nav {
+    background: linear-gradient(180deg, #7ed9ff 0%, #b8ecff 100%);
+    padding: 10px 0;
+}
+
+
+/* -------- NAV PRINCIPAL -------- */
+.kiddy-nav {
+    background: transparent;
+    padding: 0;
+}
+
+/* Logo */
+.logo-img {
+    height: 70px;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;   /* 👈 CLAVE */
+    height: 90px;          /* ajusta si quieres */
+    
+}
+
+
+/* CINTA LÚDICA */
+.kiddy-banner {
+    background: #ffb700;
+    border-radius: 50px;
+    border: 6px dashed #ffe59e;
+    padding: 10px 20px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: 90%;
+    margin-top: -30px;
+}
+
+
+
+/* TÍTULO GRANDE */
+.evoces-title {
+   
+    font-size: 3rem;
+    font-weight: bold;
+    color: #ff5722;
+    
+}
+
+/* MENÚ */
+.kiddy-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.menu-item {
+    font-family: "Comic Sans MS", cursive;
+    font-size: 17px;
+    color: #060505ff;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.menu-item:hover {
+    color: #0051ff;
+    transform: scale(1.1);
+}
+
+/* -------- ABEJAS ANIMADAS -------- */
+.bee {
+    height: 60px;
+    animation: flap 0.7s infinite alternate ease-in-out;
+    filter: drop-shadow(0px 3px 3px rgba(0,0,0,0.1));
+}
+
+.bee-left {
+    margin-right: 15px;
+}
+
+.bee-right {
+    margin-left: 15px;
+}
+
+/* Animación alas */
+@keyframes flap {
+    from { transform: translateY(0px) rotate(-3deg); }
+    to   { transform: translateY(-6px) rotate(3deg); }
+}
+
+/* -------- RESPONSIVE -------- */
+@media (max-width: 991px) {
+
+    .kiddy-banner {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .kiddy-title {
+        font-size: 28px;
+    }
+
+    .kiddy-menu {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .bee {
+        display: none;   /* abejas ocultas en móvil */
+    }
+}
+
+
+  .popup-image-wrapper {
+    max-width: 850px;
+  }
+
+  .kiddie-btn {
+    background: #ffcc00;
+    border: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-radius: 12px;
+    transition: 0.2s ease-in-out;
+  }
+  .kiddie-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+
+.popup-img {
+  width: 100%;
+  object-fit: contain;
+}
+
+/* 🖥 Desktop grande */
+@media (min-width: 1200px) {
+  .popup-img {
+    max-height: 75vh;
+  }
+}
+
+/* 💻 Desktop / Notebook */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .popup-img {
+    max-height: 70vh;
+  }
+}
+
+/* 📱 Tablet */
+@media (min-width: 576px) and (max-width: 991px) {
+  .popup-img {
+    max-height: 55vh;
+  }
+}
+
+/* 📱 Móvil */
+@media (max-width: 575px) {
+  .popup-img {
+    max-height: 45vh;
+  }
+}
+
+
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25D366;
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  box-shadow: 0 4px 10px rgba(0,0,0,.3);
+  z-index: 9999;
+  transition: transform .2s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  color: white;
+}
+
+/* background: #29C5FE; */ 
+.footer-voces {
+  position: relative;
+  background: linear-gradient(to top, #29C5FE, #eaf7ff);
+  padding: 80px 20px 40px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.footer-title {
+  font-size: 26px;
+  color: #034078;
+  margin-bottom: 5px;
+}
+
+.footer-slogan {
+  font-size: 15px;
+  color: #055a8c;
+  margin-bottom: 30px;
+}
+
+/* Redes */
+.footer-redes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 30px;
+}
+
+.social-cloud {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  padding: 10px 16px;
+  border-radius: 30px;
+  color: #034078;
+  text-decoration: none;
+  font-size: 14px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.social-cloud:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.social-cloud i {
+  font-size: 18px;
+}
+
+/* MAPA */
+.footer-map iframe {
+  width: 100%;
+  max-width: 600px;
+  height: 220px;
+  border: none;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  margin-bottom: 25px;
+}
+
+/* COPYRIGHT */
+.footer-copy {
+  font-size: 13px;
+  color: #555;
+}
+
+/* ☁️ NUBES */
+.cloud {
+  position: absolute;
+  background: white;
+  border-radius: 50px;
+  opacity: 0.6;
+  animation: moveClouds linear infinite;
+}
+
+.cloud::before,
+.cloud::after {
+  content: '';
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+}
+
+.cloud-1 {
+  width: 160px;
+  height: 50px;
+  top: 30px;
+  left: -200px;
+  animation-duration: 60s;
+}
+
+.cloud-2 {
+  width: 220px;
+  height: 65px;
+  top: 90px;
+  left: -250px;
+  animation-duration: 90s;
+}
+
+.cloud-3 {
+  width: 120px;
+  height: 40px;
+  top: 150px;
+  left: -150px;
+  animation-duration: 70s;
+}
+
+.cloud::before {
+  width: 60px;
+  height: 60px;
+  top: -30px;
+  left: 20px;
+}
+
+.cloud::after {
+  width: 80px;
+  height: 80px;
+  top: -40px;
+  right: 20px;
+}
+
+@keyframes moveClouds {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(120vw);
+  }
+}
+
+/* 📱 RESPONSIVE */
+@media (max-width: 600px) {
+  .footer-title {
+    font-size: 22px;
+  }
+
+  .footer-map iframe {
+    height: 180px;
+  }
+}
+
+.header-voces {
+  background: #29C5FE;;
+  position: relative;
+  padding: 30px 20px 0;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: #ff3b3b;
+  font-weight: bold;
+}
+
+.logo {
+  width: 60px;
+}
+
+.wave {
+  display: block;
+  width: 100%;
+  height: 120px;
+}
+
+
+
+/** TIPO FR LETRAS   **/
+/*** Heading ***/
+h1,
+h2,
+h3,
+h4,
+.h1,
+.h2,
+.h3,
+.h4,
+.display-1,
+.display-2,
+.display-3,
+.display-4,
+.display-5,
+.display-6 {
+    font-family: 'Lobster Two', cursive;
+    font-weight: 700;
+}
+
+h5,
+h6,
+.h5,
+.h6 {
+    font-weight: 600;
+}
+
+.font-secondary {
+    font-family: 'Lobster Two', cursive;
+}
+
+
+
+
+
+/* ---------  */ 
+.header-carousel {
+  position: relative;
+  overflow: hidden;
+}
+
+/* 🌊 Ondas */
+.header-carousel::before,
+.header-carousel::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  left: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.header-carousel::before {
+  top: -1px;
+  height: 12px;
+  background: url(../img/bg-header-top.png) repeat-x center;
+}
+
+.header-carousel::after {
+  bottom: -1px;
+  height: 18px;
+  background: url(../img/bg-header-bottom.png) repeat-x center;
+}
+
+/* 🖼️ Imagen */
+.header-carousel img {
+  position: relative;
+  z-index: 2;
+}
+
+/* 📝 Overlay + texto */
+.header-carousel .carousel-item > .position-absolute {
+  z-index: 3;
+}
+/* ***********************     /*/
+
+
+/*****   POP  MODEL  ***  */
+.popup-img {
+  max-height: 75vh;
+  object-fit: contain;
+}
+.popup-cta {
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+}
+@media (min-width: 992px) {
+  .popup-img {
+    max-height: 80vh;
+  }
+}
+
+.popup-img-container {
+  display: inline-block;
+  max-width: 100%;
+}
+
+
+.popup-btn {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.popup-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+
+  width: 38px;
+  height: 38px;
+
+  background-color: rgba(255, 6, 6, 0.7);
+  color: #fff;
+
+  border: none;
+  border-radius: 50%;
+
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+.popup-close-btn:hover {
+  background-color: #f41717ff;
+}
+
+
+
+/* Controles */
+.carousel-control-prev,
+.carousel-control-next {
+  width: 60px;
+  height: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 1;
+  z-index: 10;
+}
+
+/* Posición */
+.carousel-control-prev { left: 15px; }
+.carousel-control-next { right: 15px; }
+
+/* CÍRCULO */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: 50px;
+  height: 50px;
+  background-color: #ff7a00;      /* 🟠 naranja */
+  border-radius: 50%;
+  background-size: 14px 14px;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: none;
+  box-shadow: 0 6px 15px rgba(0,0,0,.35);
+}
+
+/* Flechas blancas */
+.carousel-control-prev-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 16 16'%3E%3Cpath d='M11 1L4 8l7 7'/%3E%3C/svg%3E");
+}
+
+.carousel-control-next-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 16 16'%3E%3Cpath d='M5 1l7 7-7 7'/%3E%3C/svg%3E");
+}
+
+/* Hover */
+.carousel-control-prev:hover .carousel-control-prev-icon,
+.carousel-control-next:hover .carousel-control-next-icon {
+  transform: scale(1.1);
+  background-color: #ff8c1a;
+}
+
+
+.cloud-card {
+    background: #fff;
+    border-radius: 60% 60% 50% 50%;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    min-height: 300px;
+    position: relative;
+    
+}
+
+.cloud-card2 {
+    background: #fff;
+    border-radius: 60% 60% 50% 50%;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    min-height: 300px;
+    position: relative;
+}
+
+.cloud-card::before,
+.cloud-card::after {
+    content: "";
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.cloud-card::before {
+    width: 120px;
+    height: 120px;
+    top: -40px;
+    left: 30px;
+}
+
+.cloud-card::after {
+    width: 140px;
+    height: 140px;
+    top: -50px;
+    right: 30px;
+}
+
+.cloud-card .icon {
+    font-size: 3rem;
+}
+
+.cloud-card p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+}

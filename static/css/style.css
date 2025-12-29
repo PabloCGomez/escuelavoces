@@ -1,85 +1,210 @@
+/* =========================================================
+   🎨 VARIABLES / BASE
+========================================================= */
+:root {
+  --color1: #f4b400;   /* 🟡 amarillo/naranja oficial */
+  --color1claro: #ffde59;
+  --color2: #29C5FE;
+
+  --color-rojo: #E53935;        /* Rojo */
+  --color-amarillo: #FBC02D;    /* Amarillo */
+  --color-verde-oscuro: #43A047  ; /* Verde oscuro #388E3C */
+  --color-verde: #4CAF50;       /* Verde #43A047    #4CAF50 (hoja) */
+  --color-calipso: #00ACC1;
+  --color-blanco:#ffffff; 
+}
+
+/* 🔹 Helpers */
+.bg-rojo { background-color: var(--color-rojo); }
+.bg-amarillo { background-color: var(--color-amarillo); }
+.bg-verde { background-color: var(--color-verde); }
+.bg-verde-oscuro { background-color: var(--color-verde-oscuro); }
+.bg-calipso { background-color: var(--color-calipso); }
+.bg-blanco  { background-color: var(--color-blanco); }
+.text-rojo { color: var(--color-rojo); }
+.text-amarillo { color: var(--color-amarillo); }
+.text-verde { color: var(--color-verde); }
+.text-verde-oscuro { color: var(--color-verde-oscuro); }
+.text-calipso { color: var(--color-calipso); }
+.text-blanco { color: var(--color-blanco)}
+
+
 body {
-    background: #29C5FE;
+    background: var(--color2);
     font-family: "Comic Sans MS", "Poppins", sans-serif;
 }
 
-/* Nav infantil */
+
+/* =========================================================
+   🧠 TIPOGRAFÍA
+========================================================= */
+h1, h2, h3, h4,
+.h1, .h2, .h3, .h4,
+.display-1, .display-2, .display-3,
+.display-4, .display-5, .display-6 {
+    font-family: 'Lobster Two', cursive;
+    font-weight: 700;
+}
+
+h5, h6, .h5, .h6 {
+    font-weight: 600;
+}
+
+.font-secondary {
+    font-family: 'Lobster Two', cursive;
+}
+
+/* =========================================================
+   🧭 NAVBAR / HEADER
+========================================================= */
 .kiddie-nav {
-    background: #ffde59;
+    background: var(--color1claro);
     padding: 15px 0;
-    border-bottom: 4px solid #f4b400;
+    border-bottom: 4px solid var(--color2);
 }
 
 .kiddie-nav .nav-link {
     font-weight: 600;
-    color: #000 !important;
     font-size: 18px;
+    color: #000 !important;
 }
 
-/* Hero */
+.kiddy-nav {
+    background: transparent;
+    padding: 0;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    height: 90px;
+}
+
+.navbar-toggler {
+    border-color: var(--color1claro);
+}
+
+/* Logo */
+.logo-img {
+    height: 70px;
+}
+
+.logo-castillo {
+    width: 120px;
+}
+
+/* Texto marca */
+.brand-text {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #ff5f7d;
+    font-family: "Comic Neue", cursive;
+}
+
+/* =========================================================
+   🎀 BANNER / MENÚ
+========================================================= */
+.kiddy-banner {
+    background: var(--color1);
+    border-radius: 50px;
+    border: 6px dashed var(--color1claro);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: 90%;
+    margin-top: -30px;
+}
+
+.evoces-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #ff5722;
+}
+
+.kiddy-menu {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+}
+
+.menu-item {
+    font-family: "Comic Sans MS", cursive;
+    font-size: 17px;
+    color: #060505;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.menu-item:hover {
+    color: #0051ff;
+    transform: scale(1.1);
+}
+
+/* =========================================================
+   🐝 ABEJAS
+========================================================= */
+.bee {
+    height: 60px;
+    animation: flap 0.7s infinite alternate ease-in-out;
+    filter: drop-shadow(0 3px 3px rgba(0,0,0,0.1));
+}
+
+.bee-left { margin-right: 15px; }
+.bee-right { margin-left: 15px; }
+
+@keyframes flap {
+    from { transform: translateY(0) rotate(-3deg); }
+    to   { transform: translateY(-6px) rotate(3deg); }
+}
+
+/* =========================================================
+   🌟 HERO
+========================================================= */
 .hero {
     background: url('../img/fondo1.jpg') no-repeat center top;
     background-size: cover;
-    padding: 60px 0 120px 0;
+    padding: 60px 0 120px;
     text-align: center;
     color: #fff;
     position: relative;
 }
 
 .hero-slide {
-    min-height: 650px;   /* altura fija del carrusel */
+    min-height: 650px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.hero-title {
-    font-size: 65px;
-    font-weight: 700;
-}
+.hero-title { font-size: 65px; font-weight: 700; }
+.hero-sub { font-size: 30px; margin-bottom: 20px; }
 
-.hero-sub {
-    font-size: 30px;
-    margin-bottom: 20px;
-}
-
-.hero-kid-left {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 330px;
-}
-
-.hero-kid-right {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 350px;
-}
 .hero-img {
-    width: 400px;         /* todas del mismo tamaño */
-    height: 400px;        /* cuadrado igual para todas */
-    object-fit: contain;  /* no se deforman */
-    display: block;
-    margin: 0 auto;
+    width: 400px;
+    height: 400px;
+    object-fit: contain;
+    margin: auto;
 }
 
-/* Sección tarjetas */
+/* =========================================================
+   ☁️ TARJETAS / NUBES
+========================================================= */
 .feature-box {
-    background: white;
+    background: #fff;
     border-radius: 50%;
-    padding: 40px;
     width: 320px;
     height: 320px;
-    text-align: center;
+    padding: 40px;
     margin: auto;
+    text-align: center;
     box-shadow: 0 5px 10px rgba(0,0,0,0.1);
 }
 
-.feature-icon {
-    width: 60px;
-    margin-bottom: 20px;
-}
+.feature-icon { width: 60px; margin-bottom: 20px; }
 
 .feature-title {
     font-size: 26px;
@@ -88,17 +213,522 @@ body {
 }
 
 .feature-text {
-    color: #666;
     font-size: 16px;
+    color: #666;
 }
 
+/* =========================================================
+   🔘 BOTONES
+========================================================= */
 .kiddie-btn {
-    background: #f4b400;
+    background: var(--color1);
+    border: none;
+    font-weight: bold;
+    font-size: 1.2rem;
     padding: 10px 25px;
     border-radius: 30px;
-    font-weight: bold;
-    border: none;
-    color: #000;
+    transition: 0.2s;
 }
 
+.kiddie-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* =========================================================
+   🖼️ POPUP / MODAL
+========================================================= */
+.popup-img {
+    width: 100%;
+    max-height: 75vh;
+    object-fit: contain;
+}
+
+.popup-image-wrapper {
+    max-width: 850px;
+}
+
+.popup-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 6, 6, 0.7);
+    color: #fff;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.popup-close-btn:hover {
+    background: #f41717;
+}
+
+/* =========================================================
+   📱 WHATSAPP
+========================================================= */
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25D366;
+    color: #fff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    z-index: 9999;
+}
+
+/* =========================================================
+   🧩 FOOTER + NUBES
+========================================================= */
+
+
+/* Redes */
+.footer-redes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 30px;
+}
+
+.social-cloud {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  padding: 10px 16px;
+  border-radius: 30px;
+  color: #034078;
+  text-decoration: none;
+  font-size: 14px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.social-cloud:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.social-cloud i {
+  font-size: 18px;
+}
+
+/* MAPA */
+.footer-map iframe {
+  width: 100%;
+  max-width: 600px;
+  height: 220px;
+  border: none;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  margin-bottom: 25px;
+}
+
+/* COPYRIGHT */
+.footer-copy {
+  font-size: 13px;
+  color: #555;
+}
+
+
+
+.footer-voces {
+    background: linear-gradient(to top, #29C5FE, #eaf7ff);
+    padding: 80px 20px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* =========================================================
+   📱 RESPONSIVE
+========================================================= */
+@media (max-width: 991px) {
+    .kiddy-banner { flex-direction: column; }
+    .kiddy-menu { flex-direction: column; }
+    .bee { display: none; }
+}
+
+@media (max-width: 575px) {
+    .popup-img { max-height: 45vh; }
+}
+
+
+
+
+
+/* =========================================================
+   Carrusel 
+========================================================= */
+
+
+/* Imagen */
+.carousel-img {
+  width: 100%;
+  height: 80vh;
+  object-fit: cover;
+  object-position: center;
+  z-index: 1;
+  position: relative;
+}
+
+/* Overlay + texto */
+.carousel-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;               /* 👈 encima de la imagen */
+  background: linear-gradient(
+    rgba(0,0,0,.45),
+    rgba(0,0,0,.25)
+  );
+}
+    
+
+/* Texto más legible */
+.carousel-overlay h1,
+.carousel-overlay p {
+  text-shadow: 0 3px 8px rgba(0,0,0,.6);
+}
+@media (max-width: 768px) {
+  .carousel-img {
+    height: 60vh;
+  }
+
+  .carousel-overlay h1 {
+    font-size: 2rem;
+  }
+}
+
+
+/* ---------  */ 
+.header-carousel {
+  position: relative;
+  overflow: hidden;
+}
+
+/* 🌊 Ondas */
+.header-carousel::before,
+.header-carousel::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  left: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.header-carousel::before {
+  top: -1px;
+  height: 12px;
+  background: url(../img/bg-header-top.png) repeat-x center;
+}
+
+.header-carousel::after {
+  bottom: -1px;
+  height: 18px;
+  background: url(../img/bg-header-bottom.png) repeat-x center;
+}
+
+/* 🖼️ Imagen */
+.header-carousel img {
+  position: relative;
+  z-index: 2;
+}
+
+/* 📝 Overlay + texto */
+.header-carousel .carousel-item > .position-absolute {
+  z-index: 3;
+}
+
+
+
+/* Controles */
+.carousel-control-prev,
+.carousel-control-next {
+  width: 60px;
+  height: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 1;
+  z-index: 10;
+}
+
+/* Posición */
+.carousel-control-prev { left: 15px; }
+.carousel-control-next { right: 15px; }
+
+/* CÍRCULO */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: 50px;
+  height: 50px;
+  background-color:var(--color1claro);     
+  border-radius: 50%;
+  background-size: 14px 14px;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: none;
+  box-shadow: 0 6px 15px rgba(0,0,0,.35);
+}
+
+/* Flechas blancas */
+.carousel-control-prev-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 16 16'%3E%3Cpath d='M11 1L4 8l7 7'/%3E%3C/svg%3E");
+}
+
+.carousel-control-next-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 16 16'%3E%3Cpath d='M5 1l7 7-7 7'/%3E%3C/svg%3E");
+}
+
+/* Hover */
+.carousel-control-prev:hover .carousel-control-prev-icon,
+.carousel-control-next:hover .carousel-control-next-icon {
+  transform: scale(1.1);
+  background-color: var(--color1);
+}
+
+/* ***********************     /*/
+
+
+
+/* ***********************    
+      NUBES DE HOME 
+/* ***********************     /*/
+.cloud-card {
+    background: #fff;
+    border-radius: 60% 60% 50% 50%;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    min-height: 300px;
+    position: relative;
+    
+}
+
+.cloud-card2 {
+    background: #fff;
+    border-radius: 60% 60% 50% 50%;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    min-height: 300px;
+    position: relative;
+}
+
+.cloud-card::before,
+.cloud-card::after {
+    content: "";
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.cloud-card::before {
+    width: 120px;
+    height: 120px;
+    top: -40px;
+    left: 30px;
+}
+
+.cloud-card::after {
+    width: 140px;
+    height: 140px;
+    top: -50px;
+    right: 30px;
+}
+
+.cloud-card .icon {
+    font-size: 3rem;
+}
+
+.cloud-card p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+/* ***********************    
+     FIN DE HOME 
+/* ***********************     /*/
+
+
+/* ☁️ NUBES   desplasandose  */
+.cloud {
+  position: absolute;
+  background: white;
+  border-radius: 50px;
+  opacity: 0.6;
+  animation: moveClouds linear infinite;
+}
+
+.cloud::before,
+.cloud::after {
+  content: '';
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+}
+
+.cloud-1 {
+  width: 160px;
+  height: 50px;
+  top: 30px;
+  left: -200px;
+  animation-duration: 60s;
+}
+
+.cloud-2 {
+  width: 220px;
+  height: 65px;
+  top: 90px;
+  left: -250px;
+  animation-duration: 90s;
+}
+
+.cloud-3 {
+  width: 120px;
+  height: 40px;
+  top: 150px;
+  left: -150px;
+  animation-duration: 70s;
+}
+
+.cloud::before {
+  width: 60px;
+  height: 60px;
+  top: -30px;
+  left: 20px;
+}
+
+.cloud::after {
+  width: 80px;
+  height: 80px;
+  top: -40px;
+  right: 20px;
+}
+
+@keyframes moveClouds {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(120vw);
+  }
+}
+
+/* ***********************     /*/
+/* FIN  ☁️ NUBES   desplasandose  */
+
+
+
+/*** Facility ***//*********************************
+  FACILITIES – ESTILO INFANTIL
+*********************************/
+
+.facility-item {
+    text-align: center;
+    transition: transform .35s ease;
+}
+
+.facility-item:hover {
+    transform: translateY(-10px);
+}
+
+/* ===============================
+   ICONO (BURBUJA)
+================================ */
+.facility-item .facility-icon {
+    position: relative;
+    margin: 0 auto 15px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,.15);
+    animation: float 4s ease-in-out infinite;
+}
+
+/* Brillito tipo burbuja */
+.facility-item .facility-icon::after {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    top: 14px;
+    right: 18px;
+    background: rgba(255,255,255,.6);
+    border-radius: 50%;
+}
+
+/* Icono SIEMPRE blanco */
+.facility-item .facility-icon i {
+    color: #fff !important;
+    z-index: 2;
+}
+
+/* Detalles laterales */
+.facility-item .facility-icon span {
+    position: absolute;
+    width: 14px;
+    height: 28px;
+    top: 0;
+    border-radius: 50%;
+}
+
+.facility-item .facility-icon span:first-child {
+    left: 6px;
+}
+
+.facility-item .facility-icon span:last-child {
+    right: 6px;
+}
+
+/* ===============================
+   TEXTO (NUBE / BURBUJA)
+================================ */
+.facility-item .facility-text {
+    position: relative;
+    min-height: 250px;
+    padding: 35px 25px;
+    border-radius: 60% 60% 55% 55%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    box-shadow: 0 15px 30px rgba(0,0,0,.12);
+    color: #fff;
+}
+
+/* Texto SIEMPRE blanco */
+.facility-item .facility-text h3,
+.facility-item .facility-text p {
+    color: #fff !important;
+}
+
+/* ===============================
+   HOVER EFECTOS
+================================ */
+.facility-item:hover .facility-icon {
+    transform: scale(1.08) rotate(3deg);
+}
+
+.facility-item:hover .facility-text {
+    transform: scale(1.02);
+}
+
+/* ===============================
+   ANIMACIÓN FLOTANTE
+================================ */
+@keyframes float {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-6px); }
+    100% { transform: translateY(0); }
+}
 

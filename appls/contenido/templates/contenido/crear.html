@@ -2,15 +2,6 @@
 
 {% block dashboard_content %}
 
-<!-- Summernote CSS -->
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-bs5.min.css"
-      rel="stylesheet">
-
-<!-- jQuery (obligatorio para Summernote) -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<!-- Summernote JS -->
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-bs5.min.js"></script>
 
 
 
@@ -21,147 +12,148 @@
     }
 </style>
 
-
-<div class="content">
-
-    <!-- Encabezado -->
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <div>
-            <h3 class="fw-bold text-primary mb-1">
-                <i class="bi bi-newspaper me-2"></i> Noticia
-            </h3>
-            <p class="text-muted m-0">Publica contenido para el sitio web fácilmente.</p>
-        </div>
-
-        <a href="{% url 'noticias_lista' %}" class="btn btn-light shadow-sm">
-            <i class="bi bi-arrow-left"></i> Volver
-        </a>
-    </div>
-
-    <!-- Contenedor principal -->
-    <div class="row">
-        <!-- Formulario -->
-        <div class="col-lg-8">
-
-            <div class="card shadow-sm border-0 mb-4">
-                <div class="card-header bg-white py-3">
-                    <h5 class="fw-semibold m-0">
-                        <i class="bi bi-pencil-square me-2"></i> Datos principales
-                    </h5>
+<div class="container my-5" style="max-width: 900px;">
+  <div class="card shadow-sm border-0 rounded-4">
+    <div class="card-body p-4">
+            <!-- Encabezado -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h3 class="fw-bold text-primary mb-1">
+                        <i class="bi bi-newspaper me-2"></i> Noticia
+                    </h3>
+                    <p class="text-muted m-0">Publica contenido para el sitio web fácilmente.</p>
                 </div>
 
-                <div class="card-body">
-
-                    <form method="post" enctype="multipart/form-data" id="form-noticia">
-                        {% csrf_token %}
-
-                        <!-- Título -->
-                        <div class="mb-4">
-                            <label class="form-label fw-semibold">Título de la noticia</label>
-                            {{ form.titulo }}
-                        </div>
-                       
-
-                        <!-- Contenido -->
-                        <div class="mb-4">
-                            <label class="form-label fw-semibold">Contenido completo</label>
-                            {{ form.contenido |safe }}
-                        </div>
-
-                </div>
-            </div>
-        </div>
-
-        <!-- Sidebar (derecha) -->
-        <div class="col-lg-4">
-
-            <!-- Estado -->
-            <div class="card shadow-sm border-0 mb-4">
-                <div class="card-header bg-white py-3">
-                    <h6 class="fw-semibold m-0">
-                        <i class="bi bi-gear me-2 text-secondary"></i> Opciones de publicación
-                    </h6>
-                </div>
-
-                <div class="card-body">
-                    <label class="form-label fw-semibold">Estado</label>
-                    {{ form.estado }}
-                </div>
+                <a href="{% url 'noticias_lista' %}" class="btn btn-light shadow-sm">
+                    <i class="bi bi-arrow-left"></i> Volver
+                </a>
             </div>
 
-            <!-- Galería de Imágenes -->
-                            <div class="card shadow-sm border-0 mb-4">
-                                <div class="card-header bg-white py-3">
-                                    <h6 class="fw-semibold m-0">
-                                        <i class="bi bi-images me-2 text-secondary"></i> Galería de imágenes
-                                    </h6>
+            <!-- Contenedor principal -->
+            <div class="row">
+                <!-- Formulario -->
+                <div class="col-lg-8">
+
+                    <div class="card shadow-sm border-0 mb-4">
+                        <div class="card-header bg-white py-3">
+                            <h5 class="fw-semibold m-0">
+                                <i class="bi bi-pencil-square me-2"></i> Datos principales
+                            </h5>
+                        </div>
+
+                        <div class="card-body">
+
+                            <form method="post" enctype="multipart/form-data" id="form-noticia">
+                                {% csrf_token %}
+
+                                <!-- Título -->
+                                <div class="mb-4">
+                                    <label class="form-label fw-semibold">Título de la noticia</label>
+                                    {{ form.titulo }}
+                                </div>
+                            
+
+                                <!-- Contenido -->
+                                <div class="mb-4">
+                                    <label class="form-label fw-semibold">Contenido completo</label>
+                                    {{ form.contenido |safe }}
                                 </div>
 
-                                        <!-- Imágenes existentes -->
-                                        {% if noticia.fotos.all %}
-                                        <div class="row g-3 mb-4">
-                                        {% for foto in noticia.fotos.all %}
-                                        <div class="col-6 col-md-3">
-                                            <div class="card shadow-sm">
-                                            <img src="{{ foto.imagen.url }}" class="card-img-top rounded">
+                        </div>
+                    </div>
+                </div>
 
-                                            <div class="card-body p-2 text-center">
-                                                <a href="{% url 'noticia_foto_delete' foto.id %}"
-                                                class="btn btn-sm btn-outline-danger"
-                                                onclick="return confirm('¿Eliminar esta imagen?');">
-                                                🗑️ Eliminar
-                                                </a>
-                                            </div>
-                                            </div>
+                <!-- Sidebar (derecha) -->
+                <div class="col-lg-4">
+
+                    <!-- Estado -->
+                    <div class="card shadow-sm border-0 mb-4">
+                        <div class="card-header bg-white py-3">
+                            <h6 class="fw-semibold m-0">
+                                <i class="bi bi-gear me-2 text-secondary"></i> Opciones de publicación
+                            </h6>
+                        </div>
+
+                        <div class="card-body">
+                            <label class="form-label fw-semibold">Estado</label>
+                            {{ form.estado }}
+                        </div>
+                    </div>
+
+                    <!-- Galería de Imágenes -->
+                                    <div class="card shadow-sm border-0 mb-4">
+                                        <div class="card-header bg-white py-3">
+                                            <h6 class="fw-semibold m-0">
+                                                <i class="bi bi-images me-2 text-secondary"></i> Galería de imágenes
+                                            </h6>
                                         </div>
-                                        {% endfor %}
+
+                                                <!-- Imágenes existentes -->
+                                                {% if noticia.fotos.all %}
+                                                <div class="row g-3 mb-4">
+                                                {% for foto in noticia.fotos.all %}
+                                                <div class="col-6 col-md-3">
+                                                    <div class="card shadow-sm">
+                                                    <img src="{{ foto.imagen.url }}" class="card-img-top rounded">
+
+                                                    <div class="card-body p-2 text-center">
+                                                        <a href="{% url 'noticia_foto_delete' foto.id %}"
+                                                        class="btn btn-sm btn-outline-danger"
+                                                        onclick="return confirm('¿Eliminar esta imagen?');">
+                                                        🗑️ Eliminar
+                                                        </a>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                                {% endfor %}
+                                                </div>
+                                                {% else %}
+                                                <p class="text-muted">Esta noticia no tiene imágenes.</p>
+                                                {% endif %}
+
+
+
+                                        <div class="card-body">
+
+                                            <!-- Drag & Drop -->
+                                            <div id="dropzone" class="border border-2 border-primary border-dashed p-4 rounded text-center bg-light"
+                                                style="cursor:pointer;">
+                                                <i class="bi bi-cloud-arrow-up fs-1 text-primary"></i>
+                                                <p class="mt-2 mb-0 fw-semibold">Arrastra tus imágenes aquí</p>
+                                                <small class="text-muted">o haz clic para seleccionar</small>
+
+                                                <!-- Input oculto -->
+                                                <input type="file"
+                                                    id="imagenes"
+                                                    name="imagenes"
+                                                    accept="image/*"
+                                                    multiple
+                                                    hidden>
+                                            </div>
+
+                                            <!-- Previews -->
+                                            <div id="preview-list" class="row mt-3 g-3"></div>
+
+                                            <small class="text-muted d-block mt-2">Puedes subir varias imágenes.</small>
                                         </div>
-                                        {% else %}
-                                        <p class="text-muted">Esta noticia no tiene imágenes.</p>
-                                        {% endif %}
-
-
-
-                                <div class="card-body">
-
-                                    <!-- Drag & Drop -->
-                                    <div id="dropzone" class="border border-2 border-primary border-dashed p-4 rounded text-center bg-light"
-                                        style="cursor:pointer;">
-                                        <i class="bi bi-cloud-arrow-up fs-1 text-primary"></i>
-                                        <p class="mt-2 mb-0 fw-semibold">Arrastra tus imágenes aquí</p>
-                                        <small class="text-muted">o haz clic para seleccionar</small>
-
-                                        <!-- Input oculto -->
-                                        <input type="file"
-                                            id="imagenes"
-                                            name="imagenes"
-                                            accept="image/*"
-                                            multiple
-                                            hidden>
                                     </div>
 
-                                    <!-- Previews -->
-                                    <div id="preview-list" class="row mt-3 g-3"></div>
 
-                                    <small class="text-muted d-block mt-2">Puedes subir varias imágenes.</small>
-                                </div>
-                            </div>
+                    <!-- Botón guardar -->
+                    <div class="card shadow-sm border-0">
+                        <div class="card-body text-end">
+                            <button class="btn btn-primary px-4 py-2 w-100">
+                                <i class="bi bi-check-circle me-1"></i>  💾 Guardar cambios
+                            </button>
+                        </div>
+                    </div>
 
-
-            <!-- Botón guardar -->
-            <div class="card shadow-sm border-0">
-                <div class="card-body text-end">
-                    <button class="btn btn-primary px-4 py-2 w-100">
-                        <i class="bi bi-check-circle me-1"></i>  💾 Guardar cambios
-                    </button>
                 </div>
+
+                </form>
             </div>
-
-        </div>
-
-        </form>
     </div>
-
+  </div>
 </div>
 
 

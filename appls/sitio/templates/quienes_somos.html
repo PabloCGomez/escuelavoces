@@ -3,115 +3,23 @@
 
 {% block content %}
 
-<style>
-/* 🌤 HERO */
-.sky-section {
-  position: relative;
-  padding: 120px 0;
-  background: linear-gradient(to bottom, #6ec6ff, #b3e5fc);
-  overflow: hidden;
-}
 
-/* ☁ NUBES */
-.cloud {
-  position: absolute;
-  background: white;
-  border-radius: 50px;
-  opacity: 0.9;
-}
-
-.cloud::before,
-.cloud::after {
-  content: "";
-  position: absolute;
-  background: white;
-  border-radius: 50%;
-}
-
-.cloud-1 {
-  width: 180px;
-  height: 60px;
-  top: 30%;
-  left: -200px;
-  animation: moveClouds 60s linear infinite;
-}
-
-.cloud-2 {
-  width: 250px;
-  height: 80px;
-  top: 45%;
-  left: -300px;
-  animation: moveClouds 90s linear infinite;
-}
-
-.cloud-3 {
-  width: 200px;
-  height: 70px;
-  top: 60%;
-  left: -250px;
-  animation: moveClouds 75s linear infinite;
-}
-
-.cloud::before {
-  width: 60px;
-  height: 60px;
-  top: -30px;
-  left: 30px;
-}
-
-.cloud::after {
-  width: 90px;
-  height: 90px;
-  top: -45px;
-  right: 30px;
-}
-
-@keyframes moveClouds {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(140vw); }
-}
-
-/* ☁ SECCIONES */
-.sky-soft {
-  background: #f4fbff;
-}
-
-.cloud-card {
-  background: #fff;
-  border-radius: 30px;
-  padding: 30px;
-}
-
-.cloud-box {
-  background: #fff;
-  border-radius: 30px;
-  padding: 15px;
-}
-
-
-
-
-
-</style>
-
-
-
-<!-- 🌤 HERO CIELO -->
-<section class="sky-section">
-  <div class="cloud cloud-1"></div>
-  <div class="cloud cloud-2"></div>
-  <div class="cloud cloud-3"></div>
-
-  <div class="container text-center position-relative">
+<div class="container text-center position-relative">
     <h1 class="fw-bold  mb-3">Quiénes Somos</h1>
     <p class="lead ">
       Construyendo educación con valores, inclusión y comunidad
     </p>
-  </div>
+</div>
 
 <!-- ☁ NUESTRA HISTORIA -->
+<!-- 🌤 HERO CIELO -->
+<section class="cloud-section">
+  <div class="container position-relative">
 
-  <div class="container">
+
+  <div class="cloud cloud-1"></div>
+  <div class="cloud cloud-2"></div>
+  <div class="cloud cloud-3"></div>
     <div class="row align-items-center g-5">
 
       <div class="col-md-6">
@@ -134,37 +42,57 @@
       </div>
 
     </div>
-  </div>
-</section>
-
-<!-- ☁ MISIÓN Y VISIÓN -->
-<section class="sky-soft py-5">
-  <div class="container">
-    <div class="row g-4">
-
-      <div class="col-md-6">
-        <div class="cloud-card shadow-sm">
-          <h4 class="fw-bold text-primary">🎯 Nuestra Misión</h4>
-          <p class="text-muted">
-            Formar personas íntegras, críticas y comprometidas con su
-            comunidad, promoviendo una educación inclusiva y participativa.
+    <!-- titulo nuestra comunidad   -->
+    <div class="text-center mb-5">
+          <h2 class="section-title">Nuestra Comunidad Educativa</h2>
+          <p class="section-subtitle">
+            Crecemos juntos con amor, inclusión y aprendizaje
           </p>
-        </div>
-      </div>
-
-      <div class="col-md-6">
-        <div class="cloud-card shadow-sm">
-          <h4 class="fw-bold text-primary">🌱 Nuestra Visión</h4>
-          <p class="text-muted">
-            Ser una comunidad educativa referente en innovación pedagógica,
-            inclusión y formación humana.
-          </p>
-        </div>
-      </div>
-
     </div>
-  </div>
+
+    <!-- Sección nubes  -->
+    <div class="container py-5">
+        <div class="row text-center">
+            <!-- Games -->
+            <!-- Tarjeta 1 -->
+                <div class="col-md-4">
+                    <div class="cloud-card text-center p-4">          
+                        <img src="{% static 'img/ninos1.png' %}" class="feature-icon" alt="">
+                        <h3 class="feature-title">🎯 Nuestra Misión</h3>
+                        <p class="feature-text">Formar personas íntegras, críticas y comprometidas con su comunidad,
+                  promoviendo una educación inclusiva, participativa y llena de valores.</p>
+                        <button class="kiddie-btn mt-3">Más...</button>
+                    </div>
+                </div>
+            <!-- Activities -->
+            <div class="col-md-4">
+                    <div class="cloud-card2 text-center p-4">
+                    <img src="" class="feature-icon">
+                    <h3 class="feature-title"></h3>
+                    <p class="feature-text">
+                        
+                    </p>                
+                </div>
+            </div>
+            <!-- Education -->
+            <div class="col-md-4">
+                    <div class="cloud-card text-center p-4">
+                    <img src="{% static 'img/nino3.png' %}" class="feature-icon">
+                    <h3 class="feature-title">🌱 Nuestra Visión</h3>
+                    <p class="feature-text">
+                      Formar personas íntegras, críticas y comprometidas con su comunidad,
+                  promoviendo una educación inclusiva, participativa y llena de valores.
+                    </p>
+                    <button class="kiddie-btn mt-3">Mas...</button>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+</div>
 </section>
+
+
 
 
 {% endblock %}

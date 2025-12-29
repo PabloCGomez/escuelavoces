@@ -5,213 +5,157 @@
 
 {% block content %}
 
-<Style> 
 
-.hero {
-    background: url("{% static 'img/fondo1.jpg' %}") center/cover no-repeat;
-    width: 100%;
-    min-height: 280px;   /* aumenta un poco para que la imagen respire */
-    padding: 30px 0;
-}
+{% if popup_activo %}
+<!-- Popup Modal Mejorado -->
+<!-- Popup Modal Mejorado -->
+<div class="modal fade" id="popupModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content border-0 bg-transparent">
+      <div class="modal-body p-0 d-flex justify-content-center">
 
+        <div class="popup-image-wrapper position-relative text-center">
 
-.hero-slide {
-    min-height: 70px;          /* altura del carrusel */
-    padding: 40px 20px;
-}
+          <!-- BOTÓN CERRAR -->
+          <button type="button"
+                  class="btn-close position-absolute top-0 end-0 m-2 bg-white rounded-circle"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                  style="z-index:20">
+          </button>
 
-.hero-img {
-    max-width: 100%;
-    height: auto;
-    object-fit: contain;
-}
+          <!-- CARRUSEL -->
+          <div id="popupCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              {% for foto in popup_activo.fotosPopUP.all %}
+              <div class="carousel-item {% if forloop.first %}active{% endif %}">
 
-.escuela-titulo-naranja {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #ff5722;
-}
+                {% if popup_activo.link %}
+                <a href="{{ popup_activo.link }}" target="_blank">
+                {% endif %}
 
-.escuela-titulo-blanco {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #ffffffff;
-}
+                  <img src="{{ foto.imagen.url }}" class="d-block popup-img rounded-4 w-100">
 
-.escuela-subtit-blanco {
-    font-size: 1rem;
-    color: #ffffffff;
-}
-/* Nube completa */
-.cloud-card {
-    position: relative;
-    background: #fff;
-    padding: 40px 25px;
-    border-radius: 200px;
+                {% if popup_activo.link %}
+                </a>
+                {% endif %}
 
-    max-width: 400px;
-    margin: 60px auto;
-}
-
-
-/* Botón */
-.kiddie-btn {
-    background: #f4b400;
-    border: none;
-    padding: 17px 20px;
-    font-size: 1 rem;
-    color: white;
-    border-radius: 25px;
-    position: relative;
-    z-index: 10;
-}
-
-
-.cloud-section {
-    background-color: #f6e7b4;
-    background-image: radial-gradient(#f0d98c 1px, transparent 1px);
-    background-size: 16px 16px;
-}
-
-.cloud-card {
-    background: #fff;
-    border-radius: 60% 60% 50% 50%;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-    min-height: 300px;
-    position: relative;
-}
-
-.cloud-card2 {
-    background: #fff;
-    border-radius: 60% 60% 50% 50%;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-    min-height: 300px;
-    position: relative;
-}
-
-.cloud-card::before,
-.cloud-card::after {
-    content: "";
-    position: absolute;
-    background: #fff;
-    border-radius: 50%;
-    z-index: -1;
-}
-
-.cloud-card::before {
-    width: 120px;
-    height: 120px;
-    top: -40px;
-    left: 30px;
-}
-
-.cloud-card::after {
-    width: 140px;
-    height: 140px;
-    top: -50px;
-    right: 30px;
-}
-
-.cloud-card .icon {
-    font-size: 3rem;
-}
-
-.cloud-card p {
-    font-size: 0.9rem;
-    line-height: 1.6;
-}
-
-
-
-</style>
-
-
-
-
-
-<div class="hero">
-<div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-
-        <!-- SLIDE 1 (Imagen izquierda / Texto derecha) -->      
-
-        <div class="carousel-item active">
-            <div class="row align-items-center hero-slide">      
-                <!-- Imagen izquierda -->
-                <div class="col-md-6 text-center">
-                        <!--                     <img src="{% static 'img/evocesfoto1.jpg' %}" class="hero-img" alt="slide 1">
-                        -->
-                   <img src="{% static 'img/evocesfoto1.jpg' %}" class="hero-img" alt="slide 1">
-                </div>
-                <!-- Texto derecha -->
-                <div class="col-md-6 text-center text-md-start">
-                    <h2 class="escuela-titulo-blanco">Nuestro objetivo es</h2>
-                    <h1 class="escuela-titulo-naranja">Proporcionar</h1>
-                    <p class="escuela-subtit-blanco">
-                        Un entorno de confianza<br>
-                        para el crecimiento y desarrollo integral del niño
-                    </p>
-                    <button class="kiddie-btn mt-2">Más...</button>
-                </div>
+              </div>
+              {% endfor %}
             </div>
+
+            {% if popup_activo.fotosPopUP.count > 1 %}
+            <button class="carousel-control-prev" type="button" data-bs-target="#popupCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#popupCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </button>
+            {% endif %}
+          </div>
+
+          <!-- BOTÓN COMO SUBLÍNEA DE LA FOTO -->
+          <div class="mt-0" style="margin-top:-6px; position: relative; top: -18px;">
+            <a href="https://e-colegio.cl/colegio/matricula/f311d8ca-0d94-4fe5-97fc-3e732605ddc0/?from=escuelavoces">
+              <button class="kiddie-btn w-100 py-3">📝 Ingresa aquí — Matrícula Gratis</button>
+            </a>
+          </div>
+
         </div>
 
-        <!-- SLIDE 2 (Texto izquierda / Imagen derecha) -->
-        <div class="carousel-item">
-            <div class="row align-items-center hero-slide">
+      </div>
+    </div>
+  </div>
+</div>
 
-                <div class="col-md-6 order-md-2 text-center">
-                    <img src="{% static 'img/evocesfoto2.jpg' %}" class="hero-img" alt="slide 2">
+{% endif %}
+
+
+
+    <div id="headerCarousel"  class="carousel slide header-carousel position-relative" data-bs-ride="carousel">
+
+        <div class="carousel-inner">   
+                <!-- SLIDE 1 -->
+                <div class="carousel-item active position-relative">
+                    <img src="../static/img/escuelavoces1.jpeg" class="carousel-img" alt="Escuela Voces">
+                    <!-- Overlay -->
+                            <div class="carousel-overlay d-flex align-items-center">
+                                        <div class="container">
+                                                <div class="row">
+                                                    <div class="col-12 col-lg-8">
+                                                            <h1 class="display-4 fw-bold text-white mb-3">
+                                                                Escuela de Lenguaje Voces
+                                                            </h1>
+                                                            <p class="fs-5 text-white">
+                                                                Excelencia académica · 100% Gratuita
+                                                            </p>
+                                                    </div>
+                                                </div>
+                                        </div>
+                            </div>
                 </div>
 
-                <div class="col-md-6 text-center text-md-center">
-                    <h2 class="escuela-titulo-blanco">Educación con cariño</h2>
-                    <h1 class="escuela-titulo-naranja">Acompañamos</h1>
-                    <p class="escuela-subtit-blanco">
-                        Cada paso del aprendizaje<br>
-                        con dedicación y cariño.
-                    </p>
-                    <button class="kiddie-btn mt-3">Más...</button>
+
+                <!-- SLIDE 2 -->
+                <div class="carousel-item active position-relative">
+                            <img src="../static/img/escuelavoces2.jpeg" class="carousel-img" alt="Escuela Voces">
+                            <!-- Overlay -->
+                            <div class="carousel-overlay d-flex align-items-center">
+                                <div class="container">
+                                    <div class="row">
+                                            <div class="col-12 col-lg-8">
+                                            <h1 class="display-4 fw-bold text-white mb-3">
+                                                Nuestro objetivo es, Proporcionar Un entorno de confianza
+
+                                            </h1>
+                                            <p class="fs-5 text-white">
+                                                para el crecimiento y desarrollo integral del niño
+                                            </p>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
                 </div>
 
-            </div>
-        </div>
-
-        <!-- SLIDE 3 (Imagen izquierda / Texto derecha) -->
-        <div class="carousel-item">
-            <div class="row align-items-center hero-slide">
-
-                <div class="col-md-6 text-center">
-                    <img src="{% static 'img/evocesfoto3.jpg' %}" class="hero-img" alt="slide 3">
+                <!-- SLIDE 3 -->
+                <div class="carousel-item active position-relative">
+                            <img src="../static/img/escuelavoces3.jpeg" class="carousel-img" alt="Escuela Voces">
+                            <!-- Overlay -->
+                            <div class="carousel-overlay d-flex align-items-center">
+                                    <div class="container">
+                                            <div class="row">
+                                                    <div class="col-12 col-lg-8">
+                                                        <h1 class="display-4 fw-bold text-white mb-3">
+                                                            Educación con cariño
+                                                        </h1>
+                                                        <p class="fs-5 text-white">
+                                                            Acompañamos, Cada paso del aprendizaje con dedicación y cariño.
+                                                        </p>
+                                                    </div>
+                                            </div>
+                                    </div>
+                            </div>
                 </div>
+        </div> <!-- 🔴 cierre correcto de carousel-inner -->
 
-                <div class="col-md-6">
-                    <h2 class="escuela-titulo-blanco">Creciendo juntos</h2>
-                    <h1 class="escuela-titulo-naranja">Descubrir</h1>
-                    <p class="escuela-subtit-blanco">
-                        Fomentamos la creatividad<br>
-                        y la exploración segura.
-                    </p>
-                    <button class="kiddie-btn mt-1">Más...</button>
-                </div>
-                    
-            </div>
-        </div>
+    <!-- CONTROLES (FUERA) -->
+    <button class="carousel-control-prev" type="button"
+            data-bs-target="#headerCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
 
+    <button class="carousel-control-next" type="button"
+            data-bs-target="#headerCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
     </div>
 
-</div>
-</div>
 
-<!-- Sección Features -->
-
+<!-- Sección nubes  -->
 <div class="container py-5">
-
     <div class="row text-center">
-
         <!-- Games -->
          <!-- Tarjeta 1 -->
-       
             <div class="col-md-4">
                 <div class="cloud-card text-center p-4">          
                     <img src="{% static 'img/ninos1.png' %}" class="feature-icon" alt="">
@@ -220,9 +164,7 @@
                     <button class="kiddie-btn mt-3">Más...</button>
                 </div>
             </div>
-   
         <!-- Activities -->
-        
         <div class="col-md-4">
                 <div class="cloud-card2 text-center p-4">
                 <img src="{% static 'img/nino2.png' %}" class="feature-icon">
@@ -233,7 +175,6 @@
                 <button class="kiddie-btn mt-3">Mas...</button>
             </div>
         </div>
-        
         <!-- Education -->
         <div class="col-md-4">
                 <div class="cloud-card text-center p-4">
@@ -245,9 +186,85 @@
                 <button class="kiddie-btn mt-3">Mas...</button>
                 </div>
         </div>
+    </div>
 </div>
+<!--  Fin Seccion  Nubes -->  
 
-</div> 
+
+
+ <!-- Facilities Start -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                    <h1 class="display-4 fw-bold text-white mb-3"> Escuela Voces </h1>
+                    <p class="fs-5 text-white"> En nuestra escuela </p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+
+                        <div class="facility-item">
+                            <div class="facility-icon bg-primary">
+                                <span class="bg-primary"></span>
+                                <i class="fa fa-seedling fa-3x text-primary"></i>
+                                <span class="bg-primary"></span>
+                            </div>
+                            <div class="facility-text bg-primary">
+                                <h3 class="text-primary mb-3">Huerto</h3>
+                                <p class="mb-0">Un hermoso huerto donde los niños y niñas  pueden plantar cosechar </p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="facility-item">
+                            <div class="facility-icon bg-verde">
+                                <span class="bg-verde"></span>
+                                <i class="fa fa-school fa-3x bg-verde" ></i>
+                                <span class="bg-verde"></span>
+                            </div>
+                            <div class="facility-text bg-verde">
+                                <h3 class="texto-blanco mb-3">Niveles</h3>
+                                <p class="mb-0"> desde 3 a 5 Años   </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="facility-item">
+                            <div class="facility-icon bg-warning">
+                                <span class="bg-warning"></span>
+                                <i class="fa fa-home fa-3x text-warning"></i>
+                                <span class="bg-warning"></span>
+                            </div>
+                            <div class="facility-text bg-warning">
+                                <h3 class="text-warning mb-3">Educacion Gratuita</h3>
+                                <p class="mb-0">Educacion gratuita y de calidad </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                        <div class="facility-item">
+                            <div class="facility-icon bg-rojo">
+                                <span class="bg-rojo"></span>
+                                <i class="fa fa-chalkboard-teacher fa-3x text-info"></i>
+                                <span class="bg-rojo"></span>
+                            </div>
+                            <div class="facility-text bg-rojo">
+                                <h3 class="text-rojo mb-3">Fonoadiologia</h3>
+                                <p class="mb-0">Tenemos Fonoaudiologia pata nuestros alumnos</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Facilities End -->
+
+
+
+
+
+
+
 
 
 

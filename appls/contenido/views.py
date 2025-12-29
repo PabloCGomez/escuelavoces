@@ -23,7 +23,7 @@ def noticias_lista_public(request):
         estado="publicado"
     ).order_by("-fecha_publicacion")
 
-    return render(request, "contenido/noticias_blog.html", {
+    return render(request, "noticias_blog.html", {
         "noticia": noticias
     })
 
@@ -205,7 +205,7 @@ def popup_editar(request, id):
     else:
         form = MensajePopUpForm(instance=popup)
 
-    return render(request, "contenido/popup_form.html", {
+    return render(request, "contenido/crear_popup.html", {
         "form": form,
         "popup": popup,
         "titulo": "Editar mensaje PopUp"
