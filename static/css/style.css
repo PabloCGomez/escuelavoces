@@ -34,6 +34,11 @@ body {
     font-family: "Comic Sans MS", "Poppins", sans-serif;
 }
 
+.header-voces {
+  position: relative;
+  z-index: 1000;   /* 🔥 más alto que todo el carrusel */
+}
+
 
 /* =========================================================
    🧠 TIPOGRAFÍA
@@ -74,6 +79,7 @@ h5, h6, .h5, .h6 {
     padding: 0;
 }
 
+
 .navbar {
     display: flex;
     align-items: center;
@@ -81,6 +87,7 @@ h5, h6, .h5, .h6 {
 }
 
 .navbar-toggler {
+    background-color:var(--color1);
     border-color: var(--color1claro);
 }
 
@@ -143,6 +150,44 @@ h5, h6, .h5, .h6 {
     color: #0051ff;
     transform: scale(1.1);
 }
+
+@media (max-width: 991px) {
+  .kiddy-banner {
+    flex-direction: column;
+    padding: 15px;
+    margin-top: 10px;
+  }
+
+  .kiddy-menu {
+    gap: 15px;
+  }
+}
+
+.kiddy-toggler {
+  background-color: var(--color1claro);      /* 🟡 amarillo */
+  border-radius: 12px;
+  padding: 8px 12px;
+  border: 2px solid var(--color1);
+}
+
+/* Ícono hamburguesa en blanco */
+.kiddy-toggler .navbar-toggler-icon {
+  filter: invert(1);
+}
+
+/* Hover */
+.kiddy-toggler:hover {
+  background-color: #ff9800;      /* 🟠 naranja */
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .kiddy-toggler {
+    padding: 10px 14px;
+  }
+}
+
+
 
 /* =========================================================
    🐝 ABEJAS
@@ -381,9 +426,11 @@ h5, h6, .h5, .h6 {
   position: relative;
 }
 
+
 /* Overlay + texto */
 .carousel-overlay {
   position: absolute;
+  pointer-events: none;
   inset: 0;
   z-index: 2;               /* 👈 encima de la imagen */
   background: linear-gradient(
@@ -409,10 +456,12 @@ h5, h6, .h5, .h6 {
 }
 
 
+
 /* ---------  */ 
 .header-carousel {
   position: relative;
   overflow: hidden;
+  z-index: 1;
 }
 
 /* 🌊 Ondas */
