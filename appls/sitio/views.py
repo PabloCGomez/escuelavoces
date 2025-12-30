@@ -18,6 +18,7 @@ def contacto(request):
         nombre = request.POST.get("nombre")
         email = request.POST.get("email")
         mensaje = request.POST.get("mensaje")
+        telefono = request.POST.get("telefono")
 
         if not nombre or not email or not mensaje:
             messages.error(request, "Todos los campos son obligatorios.")
@@ -29,98 +30,139 @@ def contacto(request):
         asunto_admin = f"Nuevo contacto - {nombre}"
 
         cuerpo_admin = f"""
-Nombre: {nombre}
-Email: {email}
+                          <!DOCTYPE html>
+                          <html lang="es">
+                          <head>
+                            <meta charset="UTF-8">
+                          </head>
+                          <body style="font-family: Arial, sans-serif;">
+                            <p><strong>Hola equipo Escuela Voces,</strong></p>
 
-Mensaje:
-{mensaje}
-"""
+                            <p>Se ha recibido un nuevo mensaje desde el formulario de contacto:</p>
 
-        try:
-            EmailMessage(
+                            <ul>
+                              <li><strong>Nombre:</strong> {nombre}</li>
+                              <li><strong>Email:</strong> {email}</li>
+                              <li><strong>Teléfono:</strong> {telefono}</li>
+                            </ul>
+
+                            <p>Por favor, revisar y responder a la brevedad.</p>
+
+                            <p>Saludos,<br>
+                            Sistema Web Escuela Voces</p>
+                          </body>
+                          </html>
+                          """
+    
+        email_msg = EmailMessage(
                 subject=asunto_admin,
                 body=cuerpo_admin,
                 from_email=settings.DEFAULT_FROM_EMAIL,
-                to=["site.escuelavoces@gmail.com"],
+                to=[
+                    "site.escuelavoces@gmail.com",
+                    "direccion@escuelavoces.cl"
+                ],
                 reply_to=[email],
-            ).send()
+            )
+        email_msg.content_subtype = "html"
+        email_msg.send()
 
-            # -------------------------
-            # 2️⃣ Correo HTML al usuario
-            # -------------------------
-            asunto_user = "Gracias por contactarnos 🎶"
 
-            cuerpo_html = f"""
-            <html>
-            <body style="font-family: Arial, sans-serif; background-color:#f4f6f8; padding:20px;">
-              <table width="100%" cellspacing="0" cellpadding="0">
-                <tr>
-                  <td align="center">
-                    <table width="600" style="background:#ffffff; border-radius:10px; padding:30px;">
-                      
-                      <tr>
-                        <td align="center">
-                          <h2 style="color:#4a6cf7;">Escuela Voces</h2>
+        # -------------------------
+        # 2️⃣ Correo HTML al usuario
+        # -------------------------
+        asunto_user = "Gracias por contactarnos "
+        cuerpo_html = f"""
+            <!DOCTYPE html>
+            <html lang="es">
+                
+                      <body style="margin:0; padding:0; font-family: Arial, sans-serif; background-color:#f4f6f8;">
+                        <table width="100%" cellpadding="0" cellspacing="0" style="padding:20px 0;">
+                          <tr>
+                            <td align="center">
+
+                    ```
+                          <!-- CONTENEDOR -->
+                          <table width="600" cellpadding="0" cellspacing="0"
+                                style="background-color:#ffffff; border-radius:12px; padding:30px; box-shadow:0 4px 12px rgba(0,0,0,0.08);">
+
+                            <!-- HEADER -->
+                            <tr>
+                            
+                              <td align="center" style="padding-bottom:20px;">
+                                <img src="https://escuelavoces.cl/static/img/castillo2.png"
+                                      width="90"
+                                      alt="Escuela Voces"
+                                      style="display:block; margin-bottom:10px;">
+
+                                  <h2 style="margin:0; color:#E53935; font-size:26px;">
+                                    Escuela de Lenguaje Voces
+                                  </h2>
+    
+                                
+                                
+                                <p style="margin:8px 0 0; color:#666; font-size:14px;">
+                                  Educación con amor, inclusión y excelencia
+                                </p>
+                              </td>
+                            </tr>
+
+                            <!-- CONTENIDO -->
+                            <tr>
+                              <td style="color:#333; font-size:15px; line-height:1.6;">
+                                <p>Hola <strong>{nombre}</strong>,</p>
+
+                                <p>
+                                  💛 Gracias por escribirnos.  
+                                  Hemos recibido tu mensaje correctamente y queremos contarte que ya está en manos de nuestro equipo.
+                                </p>
+
+                                <p>
+                                  Nos pondremos en contacto contigo a la brevedad para entregarte toda la información que necesites.
+                                </p>
+
+                                <p style="background-color:#fff3e0; padding:15px; border-radius:8px; text-align:center;">
+                                  <strong>¡Gracias por confiar en Escuela Voces!</strong>
+                                </p>
+
+                                <p style="margin-top:30px;">
+                                  Con cariño,<br>
+                                  <strong>Equipo Escuela Voces</strong>
+                                </p>
+                              </td>
+                            </tr>
+
+                            <!-- FOOTER -->
+                            <tr>
+                              <td align="center" style="padding-top:25px;">
+                                <p style="font-size:12px; color:#999;">
+                                  Este correo es automático, por favor no respondas a este mensaje. Cel +56 9 3711 3816
+                                </p>
+                              </td>
+                            </tr>
+
+                          </table>
+
                         </td>
                       </tr>
-
-                      <tr>
-                        <td>
-                          <p style="font-size:16px;">Hola <strong>{nombre}</strong>,</p>
-
-                          <p style="font-size:15px; color:#333;">
-                            Gracias por escribirnos 💙  
-                            Hemos recibido tu mensaje correctamente.
-                          </p>
-
-                          <p style="font-size:15px; color:#333;">
-                            Nuestro equipo se pondrá en contacto contigo a la brevedad.
-                          </p>
-
-                          <p style="font-size:15px; color:#333;">
-                            🎵 <strong>Pronto te contactaremos.</strong>
-                          </p>
-
-                          <br>
-
-                          <p style="font-size:14px; color:#777;">
-                            Saludos cordiales,<br>
-                            <strong>Equipo Escuela Voces</strong>
-                          </p>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td align="center" style="padding-top:20px;">
-                          <p style="font-size:12px; color:#999;">
-                            Este correo es automático, por favor no respondas.
-                          </p>
-                        </td>
-                      </tr>
-
                     </table>
-                  </td>
-                </tr>
-              </table>
-            </body>
-            </html>
+                    ```
+
+                      </body>
+                    </html>
             """
 
-            email_user = EmailMessage(
+        email_user = EmailMessage(
                 subject=asunto_user,
                 body=cuerpo_html,
                 from_email=settings.DEFAULT_FROM_EMAIL,
                 to=[email],
             )
-            email_user.content_subtype = "html"  # 👈 CLAVE
-            email_user.send()
+        email_user.content_subtype = "html"  # 👈 CLAVE
+        email_user.send()
 
-            messages.success(request, "Mensaje enviado correctamente ✅")
-
-        except Exception as e:
-            messages.error(request, "Error al enviar el mensaje ❌")
-            print(e)
-
+        messages.success(request, "Mensaje enviado correctamente ✅")
+    
     return render(request, "contacto.html")
 
 
